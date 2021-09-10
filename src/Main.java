@@ -9,17 +9,18 @@ import java.util.Scanner;
 import com.google.gson.Gson;
 
 import model.Movie;
+import model.Response;
 
 
 public class Main {
 	
-	static LRUCache<Movie> cache;
+	static LRUCache<Response> cache;
 
 	public static void main(String[] args) throws IOException, InterruptedException  {
 		// TODO Auto-generated method stub
 
-		cache = new LRUCache<Movie>(3);
-		String uriApi = "http://www.omdbapi.com/?apikey=ba4a861a&t=";
+		cache = new LRUCache<Response>(3);
+		String uriApi = "https://api.themoviedb.org/3/search/movie?api_key=13e9d05f4e53dc9f7e0e1165a8c2c45c&query=";
 		
 		Scanner in = new Scanner(System.in);
 		
@@ -52,11 +53,13 @@ public class Main {
 				
 			}
 			else {
-				Movie movie=searchMovie(uriApi, stitle);
-				if(movie.getResponse())
-					System.out.println(movie);
-				else
+				Response r=searchMovie(uriApi, stitle);
+				if(r.getTotal_results()==0) 
 					System.out.println("No se encontró la película");
+				else
+					for(Movie m : r.getResults()) {
+						System.out.println(m);
+					}
 			}
 			
 			    		
@@ -66,7 +69,7 @@ public class Main {
     
 	}
 	
-	static Movie searchMovie(String uriApi, String stitle) throws IOException, InterruptedException {
+	static Response searchMovie(String uriApi, String stitle) throws IOException, InterruptedException {
 		if(cache.get_value_from_key(stitle)!=null) {
 			System.out.println("Búsqueda en cache:");
 			return  cache.get_value_from_key(stitle);
@@ -83,11 +86,11 @@ public class Main {
 		}catch(Exception e) {
 			System.out.println("Problemas de conexión");
 		}
-	    	    
+	   	    
 	    Gson gson = new Gson();
-	    Movie movie = gson.fromJson(response.body().toString(), Movie.class);
-	    cache.push(stitle, movie);
-	    return movie;
+	    Response r = gson.fromJson(response.body().toString(), Response.class);
+	    cache.push(stitle, r);
+	    return r;
 	}
 	
 	

@@ -1,100 +1,144 @@
 package model;
 
 public class Movie {
-	String Title;
-	String Year;
-	String Released;
-	String Genre;
-	String Director;
-	String Actors;
-	String imdbID;
-	String Type;
-	Boolean Response;
-	
+
+	Integer id;
+	String original_title;
+	Double vote_average;
+	Double vote_count;
+	Double popularity;
+	String overview;
+	String release_date;
 	
 	public Movie() {
 		
 	}
 	
 	
-	public Movie(String title, String year, String released, String genre, String director, String actors,
-			String imdbID, String type, Boolean response) {
+	
+
+	 public Movie(Integer id, String original_title, Double vote_average, Double vote_count, Double popularity,
+			String overview, String release_date) {
 		super();
-		Title = title;
-		Year = year;
-		Released = released;
-		Genre = genre;
-		Director = director;
-		Actors = actors;
-		this.imdbID = imdbID;
-		Type = type;
-		Response = response;
+		this.id = id;
+		this.original_title = original_title;
+		this.vote_average = vote_average;
+		this.vote_count = vote_count;
+		this.popularity = popularity;
+		this.overview = overview;
+		this.release_date = release_date;
 	}
-	
-	
-	public String getTitle() {
-		return Title;
+
+
+
+
+	public Integer getId() {
+		return id;
 	}
-	public void setTitle(String title) {
-		Title = title;
+
+
+
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	public String getYear() {
-		return Year;
+
+
+
+
+	public String getOriginal_title() {
+		return original_title;
 	}
-	public void setYear(String year) {
-		Year = year;
+
+
+
+
+	public void setOriginal_title(String original_title) {
+		this.original_title = original_title;
 	}
-	public String getReleased() {
-		return Released;
+
+
+
+
+	public Double getVote_average() {
+		return vote_average;
 	}
-	public void setReleased(String released) {
-		Released = released;
+
+
+
+
+	public void setVote_average(Double vote_average) {
+		this.vote_average = vote_average;
 	}
-	public String getGenre() {
-		return Genre;
+
+
+
+
+	public Double getVote_count() {
+		return vote_count;
 	}
-	public void setGenre(String genre) {
-		Genre = genre;
+
+
+
+
+	public void setVote_count(Double vote_count) {
+		this.vote_count = vote_count;
 	}
-	public String getDirector() {
-		return Director;
+
+
+
+
+	public Double getPopularity() {
+		return popularity;
 	}
-	public void setDirector(String director) {
-		Director = director;
+
+
+
+
+	public void setPopularity(Double popularity) {
+		this.popularity = popularity;
 	}
-	public String getActors() {
-		return Actors;
+
+
+
+
+	public String getOverview() {
+		return overview;
 	}
-	public void setActors(String actors) {
-		Actors = actors;
+
+
+
+
+	public void setOverview(String overview) {
+		this.overview = overview;
 	}
-	public String getImdbID() {
-		return imdbID;
+
+
+
+
+	public String getRelease_date() {
+		return release_date;
 	}
-	public void setImdbID(String imdbID) {
-		this.imdbID = imdbID;
+
+
+
+
+	public void setRelease_date(String release_date) {
+		this.release_date = release_date;
 	}
-	public String getType() {
-		return Type;
-	}
-	public void setType(String type) {
-		Type = type;
-	}
-	public Boolean getResponse() {
-		return Response;
-	}
-	public void setResponse(Boolean response) {
-		Response = response;
-	}
-	
-	 @Override
+
+
+
+
+	@Override
 	public String toString() {
 	    return "Movie{" +
-	                " Titulo: "+Title+","+
-	                " Año: "+Year+","+
-	                " Genero: "+Genre+","+
-	                " Actores: "+Actors+","+
-	                " Id: "+imdbID+
+	    		    " Id: "+id+","+
+	                " Titulo: "+original_title+","+
+	                " Año: "+release_date+","+
+	                " Votos: "+vote_average+","+
+	                " Descripción: "+overview+","+
+	               
 	                '}';
 	}
 	
